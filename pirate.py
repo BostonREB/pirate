@@ -19,7 +19,7 @@ ingredients = {
 def find_preferences():
     preferences = {}
     for style, question in questions.items():
-        response = raw_input("{}(y or n) ---->".format(question)).lower()
+        response = raw_input("{}(y or n) ---> ".format(question)).lower()
         if response == "y" or response == "yes":
             preferences[style] = True
         print ""
@@ -41,17 +41,23 @@ def name_drink():
     return drink_name
 
 def main():
-    print "Let me make you a pirate drink!"
-    print "Arrrr! Please answer a few questions so I can determine your tastes."
+    print "Let me make you a pirate drink!\n"
+    print "Arrrr! Please answer a few questions so I can determine your tastes.\n"
     preferences = find_preferences()
-    drink = make_drink(preferences)
-    drink_name = name_drink()
-    print "Here's your drink, Matey!"
-    print "I call it the %s" % drink_name
-    print ""
-    print "Here's the recipie:"
-    for ingredient in drink:
-        print "A %s" % ingredient
+    new_drink = True
+    while new_drink:
+        drink = make_drink(preferences)
+        drink_name = name_drink()
+        print "Here's your drink, Matey!"
+        new_drink = False
+        print "I call it the %s \n" % drink_name
+        print "Here's the recipie:"
+        for ingredient in drink:
+            print "A %s" % ingredient
+        print ""
+        response = raw_input("Would you like another drink, Ye Swab?(y or n) ---> ").lower()
+        if response == "y":
+            new_drink = True
 
 if __name__ == "__main__":
     main()
