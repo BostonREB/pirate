@@ -34,12 +34,21 @@ def make_drink(preferences):
             continue
     return drink
 
+def name_drink():
+    adjective = ["Booty-shaking", "Scurvy", "Bearded", "Vengeful", "Drunken"]
+    base_name = ["Salty-Dog", "Buccaneer", "Privateer", "Freebooter", "Raider", "Marauder"]
+    drink_name = random.choice(adjective) + " " + random.choice(base_name)
+    return drink_name
+
 def main():
     print "Let me make you a pirate drink!"
-    print "Arrgg! Please answer a few questions so I can determine your tastes."
+    print "Arrrr! Please answer a few questions so I can determine your tastes."
     preferences = find_preferences()
     drink = make_drink(preferences)
+    drink_name = name_drink()
     print "Here's your drink, Matey!"
+    print "I call it the %s" % drink_name
+    print ""
     print "Here's the recipie:"
     for ingredient in drink:
         print "A %s" % ingredient
